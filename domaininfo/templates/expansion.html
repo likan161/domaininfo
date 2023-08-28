@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="static/css/expansion.css">
+	<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+</head>
+
+
+<body bgcolor="#f2f2f2">
+
+
+<div class="wrap">
+<div class="cen">
+<br />
+    {% if otvet %}
+
+            {% if IPv4 %}
+	        <p>IPv4 - Адрес <br />{{ IPv4|safe }}<p>
+            
+	        {% if IPv6 %}
+          	<p>IPv6 - Адрес <br />{{ IPv6|safe }}<p>
+	        {% endif %}
+
+                {% if MX %}
+	        <p>MX Запись: <br />{{ MX|safe }}<p>
+	        {% endif %}
+
+                {% if HostName %}
+	        <p>Имя сервера: {{ HostName }}<p>
+          	{% endif %}
+
+	        {% elif IPv4 == False %}
+                <div class="bblock">
+	        <p><br />У домена нету активной доменной зоны.<p>
+		</div>
+	    {% endif %}
+
+
+            {% if MyBarin == "PS, KZ" or MyBarin == "PSKZ-ALA, KZ" %}
+	    <p><font size="4" color="green">Хостинг сайта у нас.</font><p>
+	    {% elif MyBarin %}
+            <p><font size="4" color="red">Хостинг сайта НЕ у нас.</font><p>
+	    {% endif %}
+
+
+            {% if MXOwner  == "PS.kz" %}
+	    <p><font size="4" color="green">Почта на нашей стороне!!</font></font><p>
+	    {% elif MXOwner %}
+	        <p> Почта на стороне <font size="4" color="red"> {{ MXOwner }}</font></font><p>
+	    {% endif %}
+
+            {% if HostingType %}
+	    <p>Домен работает c {{ HostingType }}.<p>
+	    {% endif %}
+
+            {% if ClientHold %}
+	    <p><font size="4" color="red">Домен приостановлен (ClientHold).</font>
+	    {% elif ServerHold %}
+	    <p><font size="4" color="red">Домен приостановлен (ServerHold)</font><p>
+	    {% endif %}
+
+            {% if PowerDNS %}
+	        <p>Доменная зона в личном кабинете.<p>
+	    {% elif PowerDNS == False and "plesk" in HostName %}
+	        <p>Доменная зона в {{ HostName }}<p>
+	    {% endif %}
+
+        </div>
+    </div>
+	    {% endif %}
+        
+
+</div>
+</body>
+</html>

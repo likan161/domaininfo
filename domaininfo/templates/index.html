@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>PS Domain Info</title>
+	<link rel="stylesheet" href="static/css/style.css">
+	<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+</head>
+
+
+<body bgcolor="#f2f2f2">
+
+    <div class="login-header__logo" id="indigo">
+        <a href="https://www.ps.kz">
+            <img src="/static/logo.png" alt="Logo" />
+        </a>
+    </div>
+
+    <div id="output" class="container">
+        <form action="" id="user" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-75">
+                    <input type="text" id="mail1" name="mail1" placeholder="Введите имя домена">
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" name="submit" value="Начать анализ">
+            </div>
+        </form>
+    </div>
+
+            {% if otvet == False %}
+            <div class="err">
+            <div class="cen">
+		    <p>Пожалуйста,<br />введите домен. <p>
+            </div>
+            </div>
+	    {% endif %}
+
+<div class="wrap">
+<div class="cen">
+    {% if otvet %}
+
+            {% if IPv4 %}
+                <div class="bblock">
+                <p>  <b> Информация о хостинге сайта: </b> <p>
+                <hr/>
+	        <p>IPv4 - Адрес<br /> {{ IPv4|safe }}<p>
+                <hr/>
+            
+	        {% if IPv6 %}
+          	<p>IPv6 - Адрес<br > {{ IPv6|safe }}<p>
+                <hr/>
+	        {% endif %}
+
+                {% if MX %}
+	        <p>MX Запись: <br />{{ MX|safe }}<p>
+                <hr/>
+	        {% endif %}
+
+                {% if HostName %}
+	        <p>Имя сервера:<br /> {{ HostName }}<p>
+                <hr/>
+          	{% endif %}
+		</div>
+
+	        {% elif IPv4 == False %}
+                <div class="bblock">
+		<p><b>У домена нет активной доменной зоны.</b><p>
+                <hr/>
+		</div>
+	    {% endif %}
+
+
+            {% if NSWhois %}
+                <div class="bblock"> 
+	        <p>  <b> Информация о домене: </b> <p>
+                <hr/>
+	        <p> Имя домена:    <br /> {{ mail1|safe }}<p>
+                <hr/>
+	        <p> NameServer домена:    <br /> {{ NSWhois|safe }}<p>
+                <hr/>
+	        <p> Регистратор домена: <br />{{ CurentRegistrar }}<p>
+                <hr/>
+	        <p> Административный контакт: <br />{{ Emails }}<p>
+                <hr/>
+	        <p> Статусы домена: <br />{{ Status|safe }}<p>
+                <hr/>
+		<p> Дата регистрации: <br />{{ CreateDate }}<p>
+                <hr/>
+	        <p> Дата окончания: <br />{{ ExpirationDate }}<p>
+                <hr/>
+                {% if ExpirationDateLeft %}
+	            <p> Осталось{{ ExpirationDateLeft }}<p>
+                    <hr/>
+	        {% endif %}
+		    
+		</div>
+            {% elif NSWhois == False %}
+                <div class="bblock"> 
+		<p><b>Информация недоступна.</b><p>
+                <hr/>
+		</div>
+	    {% endif %}
+
+
+            <div class="bblock">
+            <p>  <b> Дополнительная информация: </b> <p>
+                <hr/>
+
+            {% if MyBarin == "PS, KZ" or MyBarin == "PSKZ-ALA, KZ" %}
+	    <p><br /><font size="4" color="green">Хостинг сайта у нас.</font><p>
+            <hr/>
+	    {% elif MyBarin %}
+            <p><br /><font size="4" color="red">Хостинг сайта НЕ у нас.</font><p>
+            <hr/>
+	    {% endif %}
+
+
+            {% if MXOwner  == "PS.kz" %}
+	    <p><br /><font size="4" color="green">Почта на нашей стороне!!</font></font><p>
+            <hr/>
+	    {% elif MXOwner %}
+	        <p><br /> Почта на стороне <font size="4" color="red"> {{ MXOwner }}</font></font><p>
+	    {% endif %}
+
+
+            {% if HostingType %}
+	    <p>Домен работает с услуги {{ HostingType }}.<p>
+            <hr/>
+	    {% endif %}
+
+            {% if ClientHold %}
+	    <p><font size="4" color="red">Домен приостановлен (ClientHold).</font>
+            <hr/>
+	    {% elif ServerHold %}
+	    <p><font size="4" color="red">Домен приостановлен (ServerHold)</font><p>
+            <hr/>
+	    {% endif %}
+
+            {% if PowerDNS and "ps.kz" in NSWhois %}
+	        <p>Доменная зона в личном кабинете. Записи добавляются там.<p>
+                <hr/>
+	    {% elif PowerDNS == False and "plesk" in HostName and "ps.kz" in NSWhois %}
+	        <p>Доменная зона в {{ HostName }}, записи добавляются там.<p>
+                <hr/>
+	    {% endif %}
+            
+	    {% if SertExpiried %}
+	        <p><font size="4" color="red">Сертификат просрочен!</font><p>
+                <hr/>
+	    {% endif %}
+
+            {% if IssuerName %}
+	        <p>Тип ssl сертификата:<br /> {{ IssuerName }}<p>
+                <hr/>
+	        <p>Дата истечения сертификата: <br />{{ ExpiriedDate }}<p>
+                <hr/>
+	    {% endif %}
+
+
+
+	    </div>
+
+        </div>
+    </div>
+	    {% endif %}
+        
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+   
+.bblock {
+  border-width: 1px;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-color: #C0C0C0; 
+  border-radius: 20px;
+  border-width: 2px;
+  border-style: solid;
+  margin: auto;
+  height: 780px;
+  margin-top: 4%;
+  bottom: 0;
+  width: 350px;
+  float: right;
+  float: left; /*Задаем обтекание*/
+  width: 320px; /*Фиксируем ширину блока*/
+  margin-right: 10px;
+  text-align: left; /*Центрируем текст по горизонтали*/
+  }
+
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.cen {
+  color: #808080;
+  margin-top: -19px;
+  margin-left: 30px;
+}
+
+hr {
+    border: none; /* Убираем границу */
+    background-color: #C0C0C0; /* Цвет линии */
+    border-radius: 100px;
+    height: 2px; /* Толщина линии */
+   }

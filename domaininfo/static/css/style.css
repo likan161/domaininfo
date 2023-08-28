@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  resize: vertical;
+  margin-left: 40px;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #09c;
+  margin: 0 auto;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  float: right;
+  position:absolute;
+  left:0;
+  right:0;
+  margin:auto;
+  margin-top: 25px;
+}
+
+input[type=submit]:hover {
+  background-color: #357ebd;
+}
+
+.wrap {
+    width: 1040px;
+    margin: 0 auto;
+    height: 150px;
+    color:red;
+       }
+   
+.bblock {
+  border-width: 1.9px;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-color: #C0C0C0; 
+  border-radius: 10px;
+  border-style: solid;
+  margin: auto;
+  height: 780px;
+  margin-top: 6%;
+  bottom: 0;
+  width: 350px;
+  float: right;
+  float: left; /*Задаем обтекание*/
+  width: 320px; /*Фиксируем ширину блока*/
+  margin-right: 10px;
+  text-align: center; /*Центрируем текст по горизонтали*/
+  }
+
+
+.err {
+  border-width: 2px;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-color: #C0C0C0; 
+  border-style: solid;
+  height: 100px;
+  position: absolute;
+  top: 205px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 200px;
+}
+
+
+.container {
+  border-width: 1.9px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-color: #C0C0C0; 
+  border-style: solid;
+  height: 155px;
+  position: absolute;
+  top: 5px;
+  bottom: 50;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 380px;
+}
+
+.mail11 {
+  border-width: 1px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-color: #C0C0C0; 
+  border-style: solid;
+  height: 500px;
+  position: absolute;
+  top: 200px;
+  bottom: 50;
+  left: 550px;
+  right: 0;
+  margin: center;
+  width: 600px;
+}
+
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.cen {
+  color: #808080;
+  margin-top: -19px;
+  margin-left: 30px;
+}
+
+.border {
+       border: 4px double black; /* Параметры границы */
+       background: #fc3; /* Цвет фона */
+       padding: 10px; /* Поля вокруг текста */
+     }
+
+hr {
+    border: none; /* Убираем границу */
+    border-bottom:1.9px solid #C0C0C0;
+   }

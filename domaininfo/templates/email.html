@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>PS Domain Info</title>
+	<link rel="stylesheet" href="static/css/style.css">
+	<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+</head>
+
+
+<body bgcolor="#f2f2f2">
+
+    <div class="login-header__logo" id="indigo">
+        <a href="https://www.ps.kz">
+            <img src="/static/logo.png" alt="Logo" />
+        </a>
+    </div>
+
+    <div id="output" class="container">
+        <form action="" id="user" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-75">
+                    <input type="text" id="mail1" name="mail1" placeholder="Введите имя домена, или email адрес">
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" name="submit" value="Начать анализ">
+            </div>
+        </form>
+    </div>
+
+            {% if otvet == False %}
+            <div class="err">
+            <div class="cen">
+	    <p><output>Пожалуйста, введите домен. </output><p>
+            </div>
+            </div>
+	    {% endif %}
+
+
+<div class="wrap">
+<div class="cen">
+
+                <div class="mail11">
+                <p> {{ AuthFailed|safe }} <p>
+                <hr/>
+                </div>
+
+</div>
+</div>
+</body>
+</html>
